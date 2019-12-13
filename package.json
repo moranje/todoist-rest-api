@@ -1,30 +1,93 @@
 {
-	"name": "unicorn-fun",
-	"version": "0.0.0",
-	"description": "My awesome module",
-	"license": "MIT",
-	"repository": "YOUR-GITHUB-USERNAME/unicorn-fun",
-	"author": {
-		"name": "YOUR NAME",
-		"email": "YOUR EMAIL",
-		"url": "YOUR WEBSITE"
-	},
-	"engines": {
-		"node": ">=8"
-	},
-	"scripts": {
-		"test": "xo && ava"
-	},
-	"files": [
-		"index.js"
-	],
-	"keywords": [
-		"unicorn",
-		"fun"
-	],
-	"dependencies": {},
-	"devDependencies": {
-		"ava": "^2.1.0",
-		"xo": "^0.24.0"
-	}
+  "name": "@moranje/todoist-rest-api",
+  "version": "0.0.0-development",
+  "description": "Another Node.js client for the todoist REST API",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moranje/todoist-rest-api.git"
+  },
+  "main": "dist/index.js",
+  "author": {
+    "name": "M. Oranje",
+    "email": "martieno@gmail.com"
+  },
+  "homepage": "https://github.com/moranje/todoist-rest-api#readme",
+  "engines": {
+    "node": ">=8"
+  },
+  "scripts": {
+    "lint": "npx eslint \"src/**\" --fix",
+    "test": "nyc ava --watch",
+    "test:prod": "npm run lint && tsc --noEmit && nyc ava",
+    "commit": "./node_modules/cz-customizable/standalone.js",
+    "build": "tsc",
+    "coverage": "nyc report --reporter=text-lcov | npx coveralls",
+    "semantic-release": "semantic-release"
+  },
+  "keywords": [
+    "todoist",
+    "rest",
+    "api"
+  ],
+  "files": [
+    "dist"
+  ],
+  "bugs": {
+    "url": "https://github.com/moranje/todoist-rest-api/issues"
+  },
+  "dependencies": {
+    "fast-safe-stringify": "2.0.7",
+    "got": "10.0.4",
+    "query-string": "6.9.0",
+    "uuid": "3.3.3"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "3.0.6",
+    "@semantic-release/exec": "3.3.8",
+    "@semantic-release/git": "7.0.18",
+    "@types/uuid": "3.4.6",
+    "@typescript-eslint/eslint-plugin": "2.11.0",
+    "@typescript-eslint/parser": "2.11.0",
+    "ava": "2.4.0",
+    "coveralls": "3.0.9",
+    "cz-customizable": "6.2.0",
+    "eslint": "6.7.2",
+    "eslint-config-prettier": "6.7.0",
+    "eslint-plugin-prettier": "3.1.1",
+    "husky": "3.1.0",
+    "lint-staged": "9.5.0",
+    "nock": "11.7.0",
+    "nyc": "14.1.1",
+    "prettier": "1.19.1",
+    "semantic-release": "^15.13.31",
+    "semantic-release-cli": "5.2.3",
+    "ts-node": "8.5.4",
+    "typescript": "3.7.3"
+  },
+  "types": "dist",
+  "ava": {
+    "files": [
+      "test/**/*.ts",
+      "!**/*fixtures*"
+    ],
+    "concurrency": 4,
+    "timeout": "1m",
+    "babel": false,
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./cz-config.js"
+    }
+  }
 }
