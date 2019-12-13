@@ -1,7 +1,7 @@
 {
   "name": "todoist-rest-api",
   "version": "0.0.0-development",
-  "description": "Another Node.js client for the todoist REST API",
+  "description": "A full-featured node.js wrapper for Todoist REST API",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -21,7 +21,7 @@
     "test": "nyc ava --watch",
     "test:prod": "npm run lint && tsc --noEmit && nyc ava",
     "commit": "./node_modules/cz-customizable/standalone.js",
-    "build": "tsc && cp package.json dist/package.json",
+    "build": "tsc && cp package.json dist/package.json && cp readme.md dist/readme.md",
     "coverage": "nyc report --reporter=text-lcov | npx coveralls",
     "semantic-release": "semantic-release"
   },
