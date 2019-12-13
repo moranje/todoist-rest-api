@@ -6,20 +6,24 @@
   ],
   "prepare": [
     "@semantic-release/changelog",
-    {
-      "path": "@semantic-release/exec",
-      "cmd": "npm run build"
-    },
+    [
+      "@semantic-release/exec",
+      {
+        "prepareCmd": "npm run build"
+      }
+    ],
     "@semantic-release/npm",
-    {
-      "path": "@semantic-release/git",
-      "assets": [
-        "CHANGELOG.md",
-        "package.json",
-        "package-lock.json"
-      ],
-      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
-    }
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "CHANGELOG.md",
+          "package.json",
+          "package-lock.json"
+        ],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ]
   ],
   "publish": [
     [
