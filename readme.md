@@ -1,4 +1,4 @@
-# Todoist REST API [![Build Status](https://travis-ci.com/moranje/todoist-rest-api.svg?branch=master)](https://travis-ci.com/moranje/todoist-rest-api) [![Coverage Status](https://coveralls.io/repos/github/moranje/todoist-rest-api/badge.svg?branch=master)](https://coveralls.io/github/moranje/todoist-rest-api?branch=master) ![npm (scoped)](https://img.shields.io/npm/v/moranje/todoist-rest-api) ![npm](https://img.shields.io/npm/dm/moranje/todoist-rest-api)
+# Todoist REST API [![Build Status](https://travis-ci.com/moranje/todoist-rest-api.svg?branch=master)](https://travis-ci.com/moranje/todoist-rest-api) [![Coverage Status](https://coveralls.io/repos/github/moranje/todoist-rest-api/badge.svg?branch=master)](https://coveralls.io/github/moranje/todoist-rest-api?branch=master) ![npm (tag)](https://img.shields.io/npm/v/todoist-rest-api/latest) ![npm](https://img.shields.io/npm/dw/todoist-rest-api)
 
 > A full-featured node.js wrapper for Todoist REST API
 
