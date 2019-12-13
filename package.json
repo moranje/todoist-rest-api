@@ -1,5 +1,5 @@
 {
-  "name": "@moranje/todoist-rest-api",
+  "name": "todoist-rest-api",
   "version": "0.0.0-development",
   "description": "Another Node.js client for the todoist REST API",
   "license": "MIT",

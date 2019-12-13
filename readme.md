@@ -5,7 +5,7 @@
 ## Install
 
 ```
-$ npm install @moranje/todoist-rest-api
+$ npm install todoist-rest-api
 ```
 
 ## Usage
