@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/moranje/todoist-rest-api#readme",
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   },
   "scripts": {
     "lint": "npx eslint \"src/**\" --fix",
