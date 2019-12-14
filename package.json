@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/moranje/todoist-rest-api.git"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
   "author": {
     "name": "M. Oranje",
     "email": "martieno@gmail.com"
@@ -21,7 +21,13 @@
     "rest",
     "api"
   ],
-  "types": "index.d.ts",
+  "files": [
+    "dist",
+    "licence",
+    "readme.md",
+    "package.json"
+  ],
+  "types": "dist",
   "bugs": {
     "url": "https://github.com/moranje/todoist-rest-api/issues"
   },
@@ -30,7 +36,7 @@
     "test": "nyc ava --watch",
     "test:prod": "npm run lint && npx tsc --noEmit && nyc ava",
     "commit": "./node_modules/cz-customizable/standalone.js",
-    "build": "npx tsc && cp package.json dist/package.json && cp readme.md dist/readme.md",
+    "build": "npx tsc",
     "coverage": "nyc report --reporter=text-lcov | npx coveralls",
     "semantic-release": "semantic-release"
   },

@@ -15,12 +15,7 @@
         "prepareCmd": "npm run build"
       }
     ],
-    [
-      "@semantic-release/npm",
-      {
-        "pkgRoot": "dist"
-      }
-    ],
+    "@semantic-release/npm",
     "@semantic-release/changelog",
     [
       "@semantic-release/git",
