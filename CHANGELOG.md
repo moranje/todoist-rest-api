@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/moranje/todoist-rest-api/compare/v1.2.3...v1.2.4) (2019-12-14)
+
+
+### Bug Fixes
+
+* include .npmignore for node_modules and CHANGELOG.md in npm package ([216ccb4](https://github.com/moranje/todoist-rest-api/commit/216ccb4f8bb1715147d9a9c01d9901ebe8db0f20))
+
 ## [1.2.3](https://github.com/moranje/todoist-rest-api/compare/v1.2.2...v1.2.3) (2019-12-14)
 
 
