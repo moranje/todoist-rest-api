@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/moranje/todoist-rest-api/compare/v1.2.4...v1.2.5) (2019-12-15)
+
+
+### Bug Fixes
+
+* remove package-lock.json from npm package ([06cd69e](https://github.com/moranje/todoist-rest-api/commit/06cd69e5d00f6da89a0d00352fc6abcb2a79cbd7))
+
 ## [1.2.4](https://github.com/moranje/todoist-rest-api/compare/v1.2.3...v1.2.4) (2019-12-14)
 
 
