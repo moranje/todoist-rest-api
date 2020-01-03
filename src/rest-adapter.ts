@@ -5,7 +5,7 @@ import { ResourceType } from './types';
 
 export const TODOIST_API_URI = 'https://api.todoist.com/rest/v1';
 
-export default class RESTAdapter<T, V> {
+export default class RESTAdapter<Type, TypeOptions> {
   /**
    * The resource type.
    */
@@ -60,8 +60,10 @@ export default class RESTAdapter<T, V> {
    * Returns a JSON object containing a REST resource object related to the given
    * id.
    */
-  public async find(id: number): Promise<T> {
-    const { body }: { body: T } = await this.client.get(`${this.type}s/${id}`);
+  public async find(id: number): Promise<Type> {
+    const { body }: { body: Type } = await this.client.get(
+      `${this.type}s/${id}`,
+    );
 
     return body;
   }
@@ -69,9 +71,9 @@ export default class RESTAdapter<T, V> {
   /**
    * Returns a JSON-encoded array containing all REST resources
    */
-  public async findAll({}): Promise<T[]>;
-  public async findAll(): Promise<T[]> {
-    const { body }: { body: T[] } = await this.client.get(`${this.type}s`);
+  public async findAll(options?: any): Promise<Type[]>;
+  public async findAll(): Promise<Type[]> {
+    const { body }: { body: Type[] } = await this.client.get(`${this.type}s`);
 
     return body;
   }
@@ -79,8 +81,8 @@ export default class RESTAdapter<T, V> {
   /**
    * Creates a new REST resource and returns the JSON object according for it
    */
-  public async create(data: V): Promise<T> {
-    const { body }: { body: T } = await this.client.post(`${this.type}s`, {
+  public async create(data: TypeOptions): Promise<Type> {
+    const { body }: { body: Type } = await this.client.post(`${this.type}s`, {
       json: data,
     });
 
@@ -91,7 +93,7 @@ export default class RESTAdapter<T, V> {
    * Updates the REST resource for the given id and returns true when the
    * request is successful
    */
-  public async update(id: number, data: V): Promise<boolean> {
+  public async update(id: number, data: TypeOptions): Promise<boolean> {
     const response = await this.client.post(`${this.type}s/${id}`, {
       json: data,
     });
