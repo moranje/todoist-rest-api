@@ -7,6 +7,11 @@ import { TodoistRESTAPI } from './types';
 export * from './types';
 
 export default function todoist(apiKey: string): TodoistRESTAPI {
+  if (!/^[0-9A-Fa-f]{40}$/.test(apiKey))
+    throw new Error(
+      `Invalid API token. A token should be 40 characters long and exist of hexadecimals, was ${apiKey} (${apiKey?.length} characters)`,
+    );
+
   return {
     v1: {
       task: new TaskAdapter(apiKey),
