@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/moranje/todoist-rest-api/compare/v1.2.5...v1.3.0) (2020-01-03)
+
+
+### Bug Fixes
+
+* **global:** removes lingering `dist` imports ([d23dffc](https://github.com/moranje/todoist-rest-api/commit/d23dffc7ca0aa8c62024e15a399d3964a7220129))
+
+
+### Features
+
+* **api:** add token validation ([01e1889](https://github.com/moranje/todoist-rest-api/commit/01e1889e3ecc83466d069ae7d068552e89b3db1d))
+
 ## [1.2.5](https://github.com/moranje/todoist-rest-api/compare/v1.2.4...v1.2.5) (2019-12-15)
 
 
