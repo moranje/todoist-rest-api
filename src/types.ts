@@ -62,6 +62,36 @@ export interface TodoistTaskOptions {
   due_lang?: string;
 }
 
+export interface TodoistTaskDue {
+  [key: string]: boolean | string | undefined;
+  /**
+   * Undocumented: whether or not the task is recurring
+   */
+  recurring: boolean;
+
+  /**
+   * Human defined date in arbitrary format.
+   */
+  date: string;
+
+  /**
+   * Only returned if exact due time set (i.e. it’s not a whole-day task),
+   * date and time in RFC3339 format in UTC.
+   */
+  string: string;
+
+  /**
+   * Date in format YYYY-MM-DD corrected to user’s timezone.
+   */
+  datetime?: string;
+
+  /**
+   * Only returned if exact due time set, user’s timezone definition either
+   * in tzdata-compatible format (“Europe/Berlin”) or as a string specifying
+   * east of UTC offset as “UTC±HH:MM” (i.e. “UTC-01:00”).
+   */
+  timezone?: string;
+}
 export interface TodoistTask {
   [key: string]:
     | string
@@ -119,35 +149,7 @@ export interface TodoistTask {
   /**
    * Object representing task due date/time
    */
-  due?: {
-    /**
-     * Undocumented: whether or not the task is recurring
-     */
-    recurring: boolean;
-
-    /**
-     * Human defined date in arbitrary format.
-     */
-    date: string;
-
-    /**
-     * Only returned if exact due time set (i.e. it’s not a whole-day task),
-     * date and time in RFC3339 format in UTC.
-     */
-    string: string;
-
-    /**
-     * Date in format YYYY-MM-DD corrected to user’s timezone.
-     */
-    datetime?: string;
-
-    /**
-     * Only returned if exact due time set, user’s timezone definition either
-     * in tzdata-compatible format (“Europe/Berlin”) or as a string specifying
-     * east of UTC offset as “UTC±HH:MM” (i.e. “UTC-01:00”).
-     */
-    timezone?: string;
-  };
+  due?: TodoistTaskDue;
 
   /**
    * URL to access this task in Todoist web interface.
