@@ -5,6 +5,8 @@ import CommentAdapter from './comment-adapter';
 export type ResourceType = 'task' | 'project' | 'label' | 'comment' | 'section';
 
 export interface TodoistTaskOptions {
+  [key: string]: string | number | number[] | undefined;
+
   /**
    * Task’s project id (read-only).
    */
@@ -61,6 +63,14 @@ export interface TodoistTaskOptions {
 }
 
 export interface TodoistTask {
+  [key: string]:
+    | string
+    | boolean
+    | number
+    | number[]
+    | TodoistTaskDue
+    | undefined;
+
   /**
    * Task id.
    */
@@ -151,6 +161,8 @@ export interface TodoistTask {
 }
 
 export interface TodoistProjectOptions {
+  [key: string]: string | number | undefined;
+
   /**
    * Name of the project.
    */
@@ -163,6 +175,8 @@ export interface TodoistProjectOptions {
 }
 
 export interface TodoistProject {
+  [key: string]: string | number | undefined;
+
   /**
    * Project id.
    */
@@ -190,6 +204,8 @@ export interface TodoistProject {
 }
 
 export interface TodoistLabelOptions {
+  [key: string]: string | number | undefined;
+
   /**
    * Name of the label.
    */
@@ -202,6 +218,8 @@ export interface TodoistLabelOptions {
 }
 
 export interface TodoistLabel {
+  [key: string]: string | number | undefined;
+
   /**
    * Label id.
    */
@@ -219,6 +237,8 @@ export interface TodoistLabel {
 }
 
 export interface TodoistCommentOptions {
+  [key: string]: string | any | undefined;
+
   /**
    * Required (or project_id). Comment’s task id (for task comments).
    */
@@ -241,6 +261,8 @@ export interface TodoistCommentOptions {
 }
 
 export interface TodoistComment {
+  [key: string]: string | number | any | undefined;
+
   /**
    * Comment id.
    */
@@ -273,6 +295,8 @@ export interface TodoistComment {
 }
 
 export interface TodoistSectionOptions {
+  [key: string]: string | number | undefined;
+
   /**
    * 	Section name.
    */
@@ -290,6 +314,8 @@ export interface TodoistSectionOptions {
 }
 
 export interface TodoistSection {
+  [key: string]: string | number | undefined;
+
   /**
    * Section ID.
    */
@@ -312,10 +338,17 @@ export interface TodoistSection {
 }
 
 export interface TodoistRESTAPI {
+  [key: string]: TodoistRESTAPIV1;
   v1: TodoistRESTAPIV1;
 }
 
 export interface TodoistRESTAPIV1 {
+  [key: string]:
+    | TaskAdapter
+    | RESTAdapter<TodoistProject, TodoistProjectOptions>
+    | RESTAdapter<TodoistLabel, TodoistLabelOptions>
+    | CommentAdapter
+    | RESTAdapter<TodoistSection, TodoistSectionOptions>;
   task: TaskAdapter;
   project: RESTAdapter<TodoistProject, TodoistProjectOptions>;
   label: RESTAdapter<TodoistLabel, TodoistLabelOptions>;
