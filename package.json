@@ -8,6 +8,7 @@
     "url": "https://github.com/moranje/todoist-rest-api.git"
   },
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": {
     "name": "M. Oranje",
     "email": "martieno@gmail.com"
@@ -27,7 +28,6 @@
     "readme.md",
     "package.json"
   ],
-  "types": "dist",
   "bugs": {
     "url": "https://github.com/moranje/todoist-rest-api/issues"
   },
