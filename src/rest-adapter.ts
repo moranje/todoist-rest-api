@@ -31,18 +31,6 @@ export default class RESTAdapter<Type, TypeOptions> {
     token: string,
     uri: string = TODOIST_API_URI,
   ) {
-    this.type = type;
-    this.uri = uri;
-    this.token = token;
-    this.client = got.extend({
-      prefixUrl: uri,
-      responseType: 'json',
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'X-Request-Id': uuid(),
-      },
-    });
-
     if (type == null) {
       throw new Error(
         `Expected the first argument to be a resource type was ${type}`,
@@ -54,6 +42,18 @@ export default class RESTAdapter<Type, TypeOptions> {
         `Expected the second argument to be an API token was ${token}`,
       );
     }
+
+    this.type = type;
+    this.uri = uri;
+    this.token = token;
+    this.client = got.extend({
+      prefixUrl: uri,
+      responseType: 'json',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'X-Request-Id': uuid(),
+      },
+    });
   }
 
   /**
