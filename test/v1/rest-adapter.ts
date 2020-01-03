@@ -21,10 +21,16 @@ test.before(() => {
 
 test('Adapter: constructor() missing type', t => {
   const error = t.throws(() => {
-    const adapter = new RESTAdapter(null, '1234567890abcdefghijklmnopqrstuvwxyz1234');
+    const adapter = new RESTAdapter(
+      null,
+      '1234567890abcdef1234567890abcdef01234567',
+    );
   }, Error);
 
-  t.is(error.message, 'Expected the first argument to be a resource type was null');
+  t.is(
+    error.message,
+    'Expected the first argument to be a resource type was null',
+  );
 });
 
 test('Adapter: constructor() missing token', t => {
@@ -32,11 +38,17 @@ test('Adapter: constructor() missing token', t => {
     const adapter = new RESTAdapter('project');
   }, Error);
 
-  t.is(error.message, 'Expected the second argument to be an API token was undefined');
+  t.is(
+    error.message,
+    'Expected the second argument to be an API token was undefined',
+  );
 });
 
 test('Adapter: find()', async t => {
-  const projectAdapter = new RESTAdapter('project', '1234567890abcdefghijklmnopqrstuvwxyz1234');
+  const projectAdapter = new RESTAdapter(
+    'project',
+    '1234567890abcdef1234567890abcdef01234567',
+  );
 
   t.deepEqual(
     await projectAdapter.find(1),
@@ -46,14 +58,26 @@ test('Adapter: find()', async t => {
 });
 
 test('Adapter: findAll()', async t => {
-  const projectAdapter = new RESTAdapter('project', '1234567890abcdefghijklmnopqrstuvwxyz1234');
+  const projectAdapter = new RESTAdapter(
+    'project',
+    '1234567890abcdef1234567890abcdef01234567',
+  );
 
-  t.deepEqual(await projectAdapter.findAll({}), FIXTURES.projects, 'should retrieve all projects');
+  t.deepEqual(
+    await projectAdapter.findAll({}),
+    FIXTURES.projects,
+    'should retrieve all projects',
+  );
 });
 
 test('Adapter: update() fail', async t => {
-  const projectAdapter = new RESTAdapter('project', '1234567890abcdefghijklmnopqrstuvwxyz1234');
-  const error = await t.throwsAsync(projectAdapter.update(13, { content: 'Get milk' }));
+  const projectAdapter = new RESTAdapter(
+    'project',
+    '1234567890abcdef1234567890abcdef01234567',
+  );
+  const error = await t.throwsAsync(
+    projectAdapter.update(13, { content: 'Get milk' }),
+  );
 
   t.regex(
     error.message,
@@ -63,7 +87,10 @@ test('Adapter: update() fail', async t => {
 });
 
 test('Adapter: remove() fail', async t => {
-  const projectAdapter = new RESTAdapter('project', '1234567890abcdefghijklmnopqrstuvwxyz1234');
+  const projectAdapter = new RESTAdapter(
+    'project',
+    '1234567890abcdef1234567890abcdef01234567',
+  );
   const error = await t.throwsAsync(projectAdapter.remove(13));
 
   t.regex(

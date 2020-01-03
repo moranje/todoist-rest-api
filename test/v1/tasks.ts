@@ -31,19 +31,33 @@ test.before(() => {
 });
 
 test('Task Adapter: find()', async t => {
-  const taskAdapter = new TaskAdapter('1234567890abcdefghijklmnopqrstuvwxyz1234');
+  const taskAdapter = new TaskAdapter(
+    '1234567890abcdef1234567890abcdef01234567',
+  );
 
-  t.deepEqual(await taskAdapter.find(1), FIXTURES.tasks[0], "should retrieve a task from it's id");
+  t.deepEqual(
+    await taskAdapter.find(1),
+    FIXTURES.tasks[0],
+    "should retrieve a task from it's id",
+  );
 });
 
 test('Task Adapter: findAll()', async t => {
-  const taskAdapter = new TaskAdapter('1234567890abcdefghijklmnopqrstuvwxyz1234');
+  const taskAdapter = new TaskAdapter(
+    '1234567890abcdef1234567890abcdef01234567',
+  );
 
-  t.deepEqual(await taskAdapter.findAll(), FIXTURES.tasks, 'should retrieve all tasks');
+  t.deepEqual(
+    await taskAdapter.findAll(),
+    FIXTURES.tasks,
+    'should retrieve all tasks',
+  );
 });
 
 test('Task Adapter: findAll() query', async t => {
-  const taskAdapter = new TaskAdapter('1234567890abcdefghijklmnopqrstuvwxyz1234');
+  const taskAdapter = new TaskAdapter(
+    '1234567890abcdef1234567890abcdef01234567',
+  );
 
   t.deepEqual(
     await taskAdapter.findAll({
@@ -53,12 +67,14 @@ test('Task Adapter: findAll() query', async t => {
       lang: 'nl',
     }),
     FIXTURES.tasks,
-    'should retieve all tasks',
+    'should retrieve all tasks',
   );
 });
 
 test('Task Adapter: create()', async t => {
-  const taskAdapter = new TaskAdapter('1234567890abcdefghijklmnopqrstuvwxyz1234');
+  const taskAdapter = new TaskAdapter(
+    '1234567890abcdef1234567890abcdef01234567',
+  );
 
   t.deepEqual(
     await taskAdapter.create({ content: 'Get milk' }),
@@ -67,8 +83,23 @@ test('Task Adapter: create()', async t => {
   );
 });
 
+// test('Task Adapter: create() headers', async t => {
+//   const taskAdapter = new TaskAdapter(
+//     '1234567890abcdef1234567890abcdef01234567',
+//   );
+//   const task = await taskAdapter.create({ content: 'Get milk' });
+
+//   t.deepEqual(
+//     await taskAdapter.create({ content: 'Get milk' }),
+//     FIXTURES.tasks[0],
+//     'should create a task and return the result',
+//   );
+// });
+
 test('Task Adapter: update()', async t => {
-  const taskAdapter = new TaskAdapter('1234567890abcdefghijklmnopqrstuvwxyz1234');
+  const taskAdapter = new TaskAdapter(
+    '1234567890abcdef1234567890abcdef01234567',
+  );
 
   t.deepEqual(
     await taskAdapter.update(1, { content: 'Get milk' }),
@@ -78,7 +109,9 @@ test('Task Adapter: update()', async t => {
 });
 
 test('Task Adapter: remove()', async t => {
-  const taskAdapter = new TaskAdapter('1234567890abcdefghijklmnopqrstuvwxyz1234');
+  const taskAdapter = new TaskAdapter(
+    '1234567890abcdef1234567890abcdef01234567',
+  );
 
   t.deepEqual(
     await taskAdapter.remove(1),
@@ -88,7 +121,9 @@ test('Task Adapter: remove()', async t => {
 });
 
 test('Task Adapter: close()', async t => {
-  const taskAdapter = new TaskAdapter('1234567890abcdefghijklmnopqrstuvwxyz1234');
+  const taskAdapter = new TaskAdapter(
+    '1234567890abcdef1234567890abcdef01234567',
+  );
 
   t.deepEqual(
     await taskAdapter.close(1),
@@ -98,7 +133,9 @@ test('Task Adapter: close()', async t => {
 });
 
 test('Task Adapter: reopen()', async t => {
-  const taskAdapter = new TaskAdapter('1234567890abcdefghijklmnopqrstuvwxyz1234');
+  const taskAdapter = new TaskAdapter(
+    '1234567890abcdef1234567890abcdef01234567',
+  );
 
   t.deepEqual(
     await taskAdapter.reopen(1),
@@ -108,7 +145,9 @@ test('Task Adapter: reopen()', async t => {
 });
 
 test('Task Adapter: close() fail', async t => {
-  const taskAdapter = new TaskAdapter('1234567890abcdefghijklmnopqrstuvwxyz1234');
+  const taskAdapter = new TaskAdapter(
+    '1234567890abcdef1234567890abcdef01234567',
+  );
   const error = await t.throwsAsync(taskAdapter.close(13));
 
   t.regex(
@@ -119,7 +158,9 @@ test('Task Adapter: close() fail', async t => {
 });
 
 test('Task Adapter: reopen() fail', async t => {
-  const taskAdapter = new TaskAdapter('1234567890abcdefghijklmnopqrstuvwxyz1234');
+  const taskAdapter = new TaskAdapter(
+    '1234567890abcdef1234567890abcdef01234567',
+  );
   const error = await t.throwsAsync(taskAdapter.reopen(13));
 
   t.regex(

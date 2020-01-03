@@ -15,7 +15,9 @@ test.before(() => {
 });
 
 test('Comment Adapter: findAll()', async t => {
-  const commentAdapter = new CommentAdapter('1234567890abcdefghijklmnopqrstuvwxyz1234');
+  const commentAdapter = new CommentAdapter(
+    '1234567890abcdef1234567890abcdef01234567',
+  );
 
   t.deepEqual(
     await commentAdapter.findAll({ id: 1, parent: 'task' }),
