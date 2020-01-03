@@ -3,7 +3,10 @@ import queryString from 'query-string';
 import stringify from 'fast-safe-stringify';
 import { TodoistTask, TodoistTaskOptions } from './types';
 
-export default class TaskAdapter extends Adapter<TodoistTask, TodoistTaskOptions> {
+export default class TaskAdapter extends Adapter<
+  TodoistTask,
+  TodoistTaskOptions
+> {
   public constructor(token: string) {
     super('task', token);
   }
@@ -18,7 +21,9 @@ export default class TaskAdapter extends Adapter<TodoistTask, TodoistTaskOptions
     lang?: string;
   }): Promise<TodoistTask[]> {
     const query = options ? queryString.stringify(options) : '';
-    const { body }: { body: TodoistTask[] } = await this.client.get(`${this.type}s?${query}`);
+    const { body }: { body: TodoistTask[] } = await this.client.get(
+      `${this.type}s?${query}`,
+    );
 
     return body;
   }
@@ -29,7 +34,9 @@ export default class TaskAdapter extends Adapter<TodoistTask, TodoistTaskOptions
    * The command does exactly what official clients do when you close a task. Regular tasks are completed and moved to history, subtasks are checked (marked as done, but not moved to history), recurring tasks are moved forward (due date is updated).
    */
   public async close(id: number): Promise<boolean> {
-    const response = await this.client.post(`${this.type}s/${id.toString()}/close`);
+    const response = await this.client.post(
+      `${this.type}s/${id.toString()}/close`,
+    );
 
     if (response.statusCode !== 204)
       throw new Error(
@@ -52,7 +59,9 @@ export default class TaskAdapter extends Adapter<TodoistTask, TodoistTaskOptions
    * - Non-completed recurring tasks are ignored.
    */
   public async reopen(id: number): Promise<boolean> {
-    const response = await this.client.post(`${this.type}s/${id.toString()}/reopen`);
+    const response = await this.client.post(
+      `${this.type}s/${id.toString()}/reopen`,
+    );
 
     if (response.statusCode !== 204)
       throw new Error(

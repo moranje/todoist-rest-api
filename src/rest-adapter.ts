@@ -26,7 +26,11 @@ export default class RESTAdapter<T, V> {
    */
   client: Got;
 
-  public constructor(type: ResourceType, token: string, uri: string = TODOIST_API_URI) {
+  public constructor(
+    type: ResourceType,
+    token: string,
+    uri: string = TODOIST_API_URI,
+  ) {
     this.type = type;
     this.uri = uri;
     this.token = token;
@@ -40,11 +44,15 @@ export default class RESTAdapter<T, V> {
     });
 
     if (type == null) {
-      throw new Error(`Expected the first argument to be a resource type was ${type}`);
+      throw new Error(
+        `Expected the first argument to be a resource type was ${type}`,
+      );
     }
 
     if (token == null) {
-      throw new Error(`Expected the second argument to be an API token was ${token}`);
+      throw new Error(
+        `Expected the second argument to be an API token was ${token}`,
+      );
     }
   }
 
@@ -84,7 +92,9 @@ export default class RESTAdapter<T, V> {
    * request is successful
    */
   public async update(id: number, data: V): Promise<boolean> {
-    const response = await this.client.post(`${this.type}s/${id}`, { json: data });
+    const response = await this.client.post(`${this.type}s/${id}`, {
+      json: data,
+    });
 
     if (response.statusCode !== 204)
       throw new Error(

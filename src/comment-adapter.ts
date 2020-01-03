@@ -1,7 +1,10 @@
 import Adapter from './rest-adapter';
 import { TodoistComment, TodoistCommentOptions } from './types';
 
-export default class CommentAdapter extends Adapter<TodoistComment, TodoistCommentOptions> {
+export default class CommentAdapter extends Adapter<
+  TodoistComment,
+  TodoistCommentOptions
+> {
   public constructor(token: string) {
     super('comment', token);
   }
