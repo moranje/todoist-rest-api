@@ -2,45 +2,67 @@
   "name": "todoist-rest-api",
   "version": "1.3.0",
   "description": "A full-featured node.js wrapper for Todoist REST API",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/moranje/todoist-rest-api.git"
-  },
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "author": {
-    "name": "M. Oranje",
-    "email": "martieno@gmail.com"
-  },
-  "homepage": "https://github.com/moranje/todoist-rest-api#readme",
-  "engines": {
-    "node": ">=10"
-  },
   "keywords": [
     "todoist",
     "rest",
     "api"
   ],
+  "homepage": "https://github.com/moranje/todoist-rest-api#readme",
+  "bugs": {
+    "url": "https://github.com/moranje/todoist-rest-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moranje/todoist-rest-api.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "M. Oranje",
+    "email": "martieno@gmail.com"
+  },
   "files": [
     "dist",
     "licence",
     "readme.md",
     "package.json"
   ],
-  "bugs": {
-    "url": "https://github.com/moranje/todoist-rest-api/issues"
-  },
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "lint": "npx eslint \"src/**\" --fix",
-    "test": "nyc ava --watch",
-    "test:prod": "npm run lint && npx tsc --noEmit && nyc ava",
-    "commit": "./node_modules/cz-customizable/standalone.js",
     "build": "npx tsc",
+    "commit": "./node_modules/cz-customizable/standalone.js",
     "coverage": "nyc report --reporter=text-lcov | npx coveralls",
-    "semantic-release": "semantic-release"
+    "lint": "npx eslint \"src/**\" --fix",
+    "semantic-release": "semantic-release",
+    "test": "nyc ava --watch",
+    "test:prod": "npm run lint && npx tsc --noEmit && nyc ava"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    },
+    "cz-customizable": {
+      "config": "./cz-config.js"
+    }
+  },
+  "ava": {
+    "babel": false,
+    "compileEnhancements": false,
+    "concurrency": 4,
+    "extensions": [
+      "ts"
+    ],
+    "files": [
+      "test/**/*.ts",
+      "!**/*fixtures*"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "timeout": "1m"
   },
   "dependencies": {
+    "builtin-status-codes": "^3.0.0",
     "fast-safe-stringify": "2.0.7",
     "got": "10.0.4",
     "query-string": "6.9.0",
@@ -70,28 +92,7 @@
     "ts-node": "8.5.4",
     "typescript": "3.7.3"
   },
-  "ava": {
-    "files": [
-      "test/**/*.ts",
-      "!**/*fixtures*"
-    ],
-    "concurrency": 4,
-    "timeout": "1m",
-    "babel": false,
-    "compileEnhancements": false,
-    "extensions": [
-      "ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-customizable"
-    },
-    "cz-customizable": {
-      "config": "./cz-config.js"
-    }
+  "engines": {
+    "node": ">=10"
   }
 }
