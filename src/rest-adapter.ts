@@ -50,6 +50,23 @@ export default class RESTAdapter<Name> {
         Authorization: `Bearer ${token}`,
         'X-Request-Id': uuid(),
       },
+      hooks: {
+        beforeError: [
+          (error: GeneralError) => {
+            const { response } = error as HTTPError;
+            if (response && response.body) {
+              error.name = 'TodoistError';
+              error.message = `${response.body} (${response.statusCode} ${
+                // @ts-ignore incomplete type definition
+                status[response.statusCode]
+                // @ts-ignore incomplete type definition
+              }, ${status[response.statusCode + '_MESSAGE']})`;
+            }
+
+            return error;
+          },
+        ],
+      },
     });
   }
 
