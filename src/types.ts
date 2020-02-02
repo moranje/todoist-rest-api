@@ -1,5 +1,5 @@
 /**
- * Module interfaces
+ * Module interfaces.
  */
 export interface TodoistTaskOptions {
   [key: string]: string | number | number[] | undefined;
@@ -62,7 +62,7 @@ export interface TodoistTaskOptions {
 export interface TodoistTaskDue {
   [key: string]: boolean | string | undefined;
   /**
-   * Undocumented: whether or not the task is recurring
+   * Undocumented: whether or not the task is recurring.
    */
   recurring: boolean;
 
@@ -72,7 +72,7 @@ export interface TodoistTaskDue {
   date: string;
 
   /**
-   * Only returned if exact due time set (i.e. it’s not a whole-day task),
+   * Only returned if exact due time set (i.e. It’s not a whole-day task),
    * date and time in RFC3339 format in UTC.
    */
   string: string;
@@ -134,7 +134,7 @@ export interface TodoistTask {
   readonly parent?: number;
 
   /**
-   * Position under the same parent or project for top-level tasks
+   * Position under the same parent or project for top-level tasks.
    */
   readonly order: number;
 
@@ -144,7 +144,7 @@ export interface TodoistTask {
   priority: 1 | 2 | 3 | 4;
 
   /**
-   * Object representing task due date/time
+   * Object representing task due date/time.
    */
   due?: TodoistTaskDue;
 
@@ -187,7 +187,7 @@ export interface TodoistProject {
   name: string;
 
   /**
-   * ID of parent project (absent for top-level projects)
+   * ID of parent project (absent for top-level projects).
    */
   readonly parent?: number;
 
@@ -254,7 +254,7 @@ export interface TodoistCommentOptions {
   content: string;
 
   /**
-   * 	Object for attachment object.
+   * Object for attachment object.
    */
   attachment?: unknown;
 }
@@ -297,7 +297,7 @@ export interface TodoistSectionOptions {
   [key: string]: string | number | undefined;
 
   /**
-   * 	Section name.
+   * Section name.
    */
   name: string;
 
@@ -337,7 +337,7 @@ export interface TodoistSection {
 }
 
 /**
- * Utility types
+ * Utility types.
  */
 export type GetResourceByName<Name> = Name extends 'task'
   ? TodoistTask

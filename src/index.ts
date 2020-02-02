@@ -1,6 +1,6 @@
+import CommentAdapter from './comment-adapter';
 import RESTAdapter from './rest-adapter';
 import TaskAdapter from './task-adapter';
-import CommentAdapter from './comment-adapter';
 
 // Export types
 export * from './types';
@@ -27,6 +27,12 @@ interface TodoistRESTAPIV1 {
   section: RESTAdapter<'section'>;
 }
 
+/**
+ * Configure REST adapters for Todoists API.
+ *
+ * @param apiKey A Todoist API key, see your [preferences](https://todoist.com/prefs/integrations).
+ * @returns A REST api object with preinstantiated resource adapters.
+ */
 export default function todoist(apiKey: string): TodoistRESTAPI {
   if (!/^[0-9A-Fa-f]{40}$/.test(apiKey))
     throw new Error(

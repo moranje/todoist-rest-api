@@ -1,8 +1,9 @@
-import got, { Got, HTTPError, GeneralError } from 'got';
-import uuid from 'uuid';
 import stringify from 'fast-safe-stringify';
-import { GetResourceByName, GetResourceOptionsByName } from './types';
+import got, { GeneralError, Got, HTTPError } from 'got';
 import status from 'http-status';
+import uuid from 'uuid';
+
+import { GetResourceByName, GetResourceOptionsByName } from './types';
 
 export const TODOIST_API_URI = 'https://api.todoist.com/rest/v1';
 
@@ -13,7 +14,7 @@ export default class RESTAdapter<Name> {
   type: Name;
 
   /**
-   * The todoist api url
+   * The todoist api url.
    */
   uri: string;
 
@@ -23,7 +24,7 @@ export default class RESTAdapter<Name> {
   token: string;
 
   /**
-   * A pre-configured got instance
+   * A pre-configured got instance.
    */
   client: Got;
 
@@ -53,7 +54,7 @@ export default class RESTAdapter<Name> {
       hooks: {
         beforeError: [
           /* istanbul ignore next */
-          (error: GeneralError) => {
+          (error: GeneralError): GeneralError => {
             const { response } = error as HTTPError;
             if (response && response.body) {
               error.name = 'TodoistError';
@@ -74,6 +75,8 @@ export default class RESTAdapter<Name> {
   /**
    * Returns a JSON object containing a REST resource object related to the given
    * id.
+   *
+   * @param id The resource id.
    */
   public async find(id: number): Promise<GetResourceByName<Name>> {
     const { body }: { body: GetResourceByName<Name> } = await this.client.get(
@@ -84,7 +87,9 @@ export default class RESTAdapter<Name> {
   }
 
   /**
-   * Returns a JSON-encoded array containing all REST resources
+   * Returns a JSON-encoded array containing all REST resources.
+   *
+   * @param options The query options.
    */
   // @ts-ignore
   public async findAll(options: any): Promise<GetResourceByName<Name>[]> {
@@ -98,7 +103,9 @@ export default class RESTAdapter<Name> {
   }
 
   /**
-   * Creates a new REST resource and returns the JSON object according for it
+   * Creates a new REST resource and returns the JSON object according for it.
+   *
+   * @param data The resource data.
    */
   public async create(
     data: GetResourceOptionsByName<Name>,
@@ -116,7 +123,10 @@ export default class RESTAdapter<Name> {
 
   /**
    * Updates the REST resource for the given id and returns true when the
-   * request is successful
+   * request is successful.
+   *
+   * @param id The resource id.
+   * @param data The resource data.
    */
   public async update(
     id: number,
@@ -138,6 +148,8 @@ export default class RESTAdapter<Name> {
 
   /**
    * Deletes a REST resource and returns an empty response.
+   *
+   * @param id The resource id.
    */
   public async remove(id: number): Promise<boolean> {
     const response = await this.client.delete(`${this.type}s/${id}`);
