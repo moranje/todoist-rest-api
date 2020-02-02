@@ -35,7 +35,7 @@
     "lint": "tsc --noEmit && npx eslint \"src/**/*.ts\" --fix",
     "semantic-release": "semantic-release",
     "test": "nyc ava --watch",
-    "test:prod": "npm run lint && npx tsc --noEmit && nyc ava"
+    "test:prod": "npm run lint && nyc ava"
   },
   "config": {
     "commitizen": {
@@ -62,9 +62,9 @@
     "timeout": "1m"
   },
   "dependencies": {
-    "builtin-status-codes": "^3.0.0",
     "fast-safe-stringify": "2.0.7",
     "got": "10.0.4",
+    "http-status": "^1.4.2",
     "query-string": "6.9.0",
     "uuid": "3.3.3"
   },
@@ -87,6 +87,8 @@
     "nock": "11.7.0",
     "nyc": "14.1.1",
     "prettier": "1.19.1",
+    "rollup": "^1.31.0",
+    "rollup-plugin-dts": "^1.2.1",
     "semantic-release": "^15.13.31",
     "semantic-release-cli": "5.2.3",
     "ts-node": "8.5.4",
