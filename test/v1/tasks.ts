@@ -32,6 +32,7 @@ test.before(() => {
 
 test('Task Adapter: find()', async t => {
   const taskAdapter = new TaskAdapter(
+    'task',
     '1234567890abcdef1234567890abcdef01234567',
   );
 
@@ -44,6 +45,7 @@ test('Task Adapter: find()', async t => {
 
 test('Task Adapter: findAll()', async t => {
   const taskAdapter = new TaskAdapter(
+    'task',
     '1234567890abcdef1234567890abcdef01234567',
   );
 
@@ -56,6 +58,7 @@ test('Task Adapter: findAll()', async t => {
 
 test('Task Adapter: findAll() query', async t => {
   const taskAdapter = new TaskAdapter(
+    'task',
     '1234567890abcdef1234567890abcdef01234567',
   );
 
@@ -73,6 +76,7 @@ test('Task Adapter: findAll() query', async t => {
 
 test('Task Adapter: create()', async t => {
   const taskAdapter = new TaskAdapter(
+    'task',
     '1234567890abcdef1234567890abcdef01234567',
   );
 
@@ -84,7 +88,7 @@ test('Task Adapter: create()', async t => {
 });
 
 // test('Task Adapter: create() headers', async t => {
-//   const taskAdapter = new TaskAdapter(
+//   const taskAdapter = new TaskAdapter('task',
 //     '1234567890abcdef1234567890abcdef01234567',
 //   );
 //   const task = await taskAdapter.create({ content: 'Get milk' });
@@ -98,6 +102,7 @@ test('Task Adapter: create()', async t => {
 
 test('Task Adapter: update()', async t => {
   const taskAdapter = new TaskAdapter(
+    'task',
     '1234567890abcdef1234567890abcdef01234567',
   );
 
@@ -110,6 +115,7 @@ test('Task Adapter: update()', async t => {
 
 test('Task Adapter: remove()', async t => {
   const taskAdapter = new TaskAdapter(
+    'task',
     '1234567890abcdef1234567890abcdef01234567',
   );
 
@@ -122,6 +128,7 @@ test('Task Adapter: remove()', async t => {
 
 test('Task Adapter: close()', async t => {
   const taskAdapter = new TaskAdapter(
+    'task',
     '1234567890abcdef1234567890abcdef01234567',
   );
 
@@ -134,6 +141,7 @@ test('Task Adapter: close()', async t => {
 
 test('Task Adapter: reopen()', async t => {
   const taskAdapter = new TaskAdapter(
+    'task',
     '1234567890abcdef1234567890abcdef01234567',
   );
 
@@ -146,6 +154,7 @@ test('Task Adapter: reopen()', async t => {
 
 test('Task Adapter: close() fail', async t => {
   const taskAdapter = new TaskAdapter(
+    'task',
     '1234567890abcdef1234567890abcdef01234567',
   );
   const error = await t.throwsAsync(taskAdapter.close(13));
@@ -159,6 +168,7 @@ test('Task Adapter: close() fail', async t => {
 
 test('Task Adapter: reopen() fail', async t => {
   const taskAdapter = new TaskAdapter(
+    'task',
     '1234567890abcdef1234567890abcdef01234567',
   );
   const error = await t.throwsAsync(taskAdapter.reopen(13));

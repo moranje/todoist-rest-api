@@ -16,6 +16,7 @@ test.before(() => {
 
 test('Comment Adapter: findAll()', async t => {
   const commentAdapter = new CommentAdapter(
+    'comment',
     '1234567890abcdef1234567890abcdef01234567',
   );
 
