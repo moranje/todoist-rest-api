@@ -1,7 +1,9 @@
 import RestAdapter from './rest-adapter';
 import { GetResourceByName } from './types';
 
-export default class CommentAdapter<Name> extends RestAdapter<Name> {
+export default class CommentAdapter<Name extends 'comment'> extends RestAdapter<
+  Name
+> {
   public constructor(type: Name, token: string) {
     super(type, token);
   }
