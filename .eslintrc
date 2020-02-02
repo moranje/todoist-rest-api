@@ -8,7 +8,9 @@
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",
-    "project": "./tsconfig.json"
+    "project": "tsconfig.json"
   },
-  "rules": {}
+  "rules": {
+    "@typescript-eslint/ban-ts-ignore": "warn"
+  }
 }
