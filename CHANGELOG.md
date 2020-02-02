@@ -1,3 +1,12 @@
+## [1.3.1](https://github.com/moranje/todoist-rest-api/compare/v1.3.0...v1.3.1) (2020-02-02)
+
+
+### Bug Fixes
+
+* **global:** fixes broken types for task and comment adapters ([0f70711](https://github.com/moranje/todoist-rest-api/commit/0f70711cd0ce361324221161e7a2d353047683d1))
+* **global:** prevent dist from showing up in import suggestions ([15f1180](https://github.com/moranje/todoist-rest-api/commit/15f1180de67aa287e4c5b617cc456e151e112ecc))
+* **global:** provide errors with info on failing api calls ([99e08c0](https://github.com/moranje/todoist-rest-api/commit/99e08c03865e3fd79d8f25e4db43112d00bdbe40))
+
 # [1.3.0](https://github.com/moranje/todoist-rest-api/compare/v1.2.5...v1.3.0) (2020-01-03)
 
 
