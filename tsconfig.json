@@ -18,7 +18,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "stripInternal": true,
-    "target": "es2017", // Node.js 8
+    "target": "es2018", // Node.js 10
     "paths": {
       "*": ["node_modules/*"]
     },
@@ -27,7 +27,7 @@
     "strictNullChecks": true,
     "strictFunctionTypes": true,
     "strictBindCallApply": true,
-    "lib": ["es6"]
+    "lib": ["es2018"]
   },
   "include": ["src/**/*.ts"]
 }
