@@ -1,14 +1,13 @@
-import Adapter from './rest-adapter';
+import RestAdapter from './rest-adapter';
 import queryString from 'query-string';
 import stringify from 'fast-safe-stringify';
-import { TodoistTask, TodoistTaskOptions } from './types';
+import { GetResourceByName } from './types';
 
-export default class TaskAdapter extends Adapter<
-  TodoistTask,
-  TodoistTaskOptions
+export default class TaskAdapter<Name extends 'task'> extends RestAdapter<
+  Name
 > {
-  public constructor(token: string) {
-    super('task', token);
+  public constructor(type: Name, token: string) {
+    super(type, token);
   }
 
   /**
@@ -19,9 +18,9 @@ export default class TaskAdapter extends Adapter<
     label_id?: number;
     filter?: string;
     lang?: string;
-  }): Promise<TodoistTask[]> {
+  }): Promise<GetResourceByName<Name>[]> {
     const query = options ? queryString.stringify(options) : '';
-    const { body }: { body: TodoistTask[] } = await this.client.get(
+    const { body }: { body: GetResourceByName<Name>[] } = await this.client.get(
       `${this.type}s?${query}`,
     );
 

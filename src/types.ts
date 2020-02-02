@@ -1,9 +1,6 @@
-import RESTAdapter from './rest-adapter';
-import TaskAdapter from './task-adapter';
-import CommentAdapter from './comment-adapter';
-
-export type ResourceType = 'task' | 'project' | 'label' | 'comment' | 'section';
-
+/**
+ * Module interfaces
+ */
 export interface TodoistTaskOptions {
   [key: string]: string | number | number[] | undefined;
 
@@ -239,7 +236,7 @@ export interface TodoistLabel {
 }
 
 export interface TodoistCommentOptions {
-  [key: string]: string | any | undefined;
+  [key: string]: string | unknown | undefined;
 
   /**
    * Required (or project_id). Comment’s task id (for task comments).
@@ -259,11 +256,11 @@ export interface TodoistCommentOptions {
   /**
    * 	Object for attachment object.
    */
-  attachment?: any;
+  attachment?: unknown;
 }
 
 export interface TodoistComment {
-  [key: string]: string | number | any | undefined;
+  [key: string]: string | number | unknown | undefined;
 
   /**
    * Comment id.
@@ -293,7 +290,7 @@ export interface TodoistComment {
   /**
    * Attachment file (optional).
    */
-  attachment?: any;
+  attachment?: unknown;
 }
 
 export interface TodoistSectionOptions {
@@ -339,21 +336,28 @@ export interface TodoistSection {
   name: string;
 }
 
-export interface TodoistRESTAPI {
-  [key: string]: TodoistRESTAPIV1;
-  v1: TodoistRESTAPIV1;
-}
-
-export interface TodoistRESTAPIV1 {
-  [key: string]:
-    | TaskAdapter
-    | RESTAdapter<TodoistProject, TodoistProjectOptions>
-    | RESTAdapter<TodoistLabel, TodoistLabelOptions>
-    | CommentAdapter
-    | RESTAdapter<TodoistSection, TodoistSectionOptions>;
-  task: TaskAdapter;
-  project: RESTAdapter<TodoistProject, TodoistProjectOptions>;
-  label: RESTAdapter<TodoistLabel, TodoistLabelOptions>;
-  comment: CommentAdapter;
-  section: RESTAdapter<TodoistSection, TodoistSectionOptions>;
-}
+/**
+ * Utility types
+ */
+export type GetResourceByName<Name> = Name extends 'task'
+  ? TodoistTask
+  : Name extends 'project'
+  ? TodoistProject
+  : Name extends 'label'
+  ? TodoistLabel
+  : Name extends 'section'
+  ? TodoistSection
+  : Name extends 'comment'
+  ? TodoistComment
+  : undefined;
+export type GetResourceOptionsByName<Name> = Name extends 'task'
+  ? TodoistTaskOptions
+  : Name extends 'project'
+  ? TodoistProjectOptions
+  : Name extends 'label'
+  ? TodoistLabelOptions
+  : Name extends 'section'
+  ? TodoistSectionOptions
+  : Name extends 'comment'
+  ? TodoistCommentOptions
+  : undefined;

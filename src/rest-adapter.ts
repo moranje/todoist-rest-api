@@ -1,15 +1,16 @@
-import got, { Got } from 'got';
+import got, { Got, HTTPError, GeneralError } from 'got';
 import uuid from 'uuid';
 import stringify from 'fast-safe-stringify';
-import { ResourceType } from './types';
+import { GetResourceByName, GetResourceOptionsByName } from './types';
+import status from 'http-status';
 
 export const TODOIST_API_URI = 'https://api.todoist.com/rest/v1';
 
-export default class RESTAdapter<Type, TypeOptions> {
+export default class RESTAdapter<Name> {
   /**
    * The resource type.
    */
-  type: ResourceType;
+  type: Name;
 
   /**
    * The todoist api url
@@ -26,11 +27,7 @@ export default class RESTAdapter<Type, TypeOptions> {
    */
   client: Got;
 
-  public constructor(
-    type: ResourceType,
-    token: string,
-    uri: string = TODOIST_API_URI,
-  ) {
+  public constructor(type: Name, token: string, uri: string = TODOIST_API_URI) {
     if (type == null) {
       throw new Error(
         `Expected the first argument to be a resource type was ${type}`,
@@ -60,8 +57,8 @@ export default class RESTAdapter<Type, TypeOptions> {
    * Returns a JSON object containing a REST resource object related to the given
    * id.
    */
-  public async find(id: number): Promise<Type> {
-    const { body }: { body: Type } = await this.client.get(
+  public async find(id: number): Promise<GetResourceByName<Name>> {
+    const { body }: { body: GetResourceByName<Name> } = await this.client.get(
       `${this.type}s/${id}`,
     );
 
@@ -71,9 +68,13 @@ export default class RESTAdapter<Type, TypeOptions> {
   /**
    * Returns a JSON-encoded array containing all REST resources
    */
-  public async findAll(options?: any): Promise<Type[]>;
-  public async findAll(): Promise<Type[]> {
-    const { body }: { body: Type[] } = await this.client.get(`${this.type}s`);
+  // @ts-ignore
+  public async findAll(options: any): Promise<GetResourceByName<Name>[]> {
+    const {
+      body,
+    }: {
+      body: GetResourceByName<Name>[];
+    } = await this.client.get(`${this.type}s`);
 
     return body;
   }
@@ -81,8 +82,14 @@ export default class RESTAdapter<Type, TypeOptions> {
   /**
    * Creates a new REST resource and returns the JSON object according for it
    */
-  public async create(data: TypeOptions): Promise<Type> {
-    const { body }: { body: Type } = await this.client.post(`${this.type}s`, {
+  public async create(
+    data: GetResourceOptionsByName<Name>,
+  ): Promise<GetResourceByName<Name>> {
+    const {
+      body,
+    }: {
+      body: GetResourceByName<Name>;
+    } = await this.client.post(`${this.type}s`, {
       json: data,
     });
 
@@ -93,7 +100,10 @@ export default class RESTAdapter<Type, TypeOptions> {
    * Updates the REST resource for the given id and returns true when the
    * request is successful
    */
-  public async update(id: number, data: TypeOptions): Promise<boolean> {
+  public async update(
+    id: number,
+    data: GetResourceOptionsByName<Name>,
+  ): Promise<boolean> {
     const response = await this.client.post(`${this.type}s/${id}`, {
       json: data,
     });

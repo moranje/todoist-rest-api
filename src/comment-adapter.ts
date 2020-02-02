@@ -1,12 +1,9 @@
-import Adapter from './rest-adapter';
-import { TodoistComment, TodoistCommentOptions } from './types';
+import RestAdapter from './rest-adapter';
+import { GetResourceByName } from './types';
 
-export default class CommentAdapter extends Adapter<
-  TodoistComment,
-  TodoistCommentOptions
-> {
-  public constructor(token: string) {
-    super('comment', token);
+export default class CommentAdapter<Name> extends RestAdapter<Name> {
+  public constructor(type: Name, token: string) {
+    super(type, token);
   }
 
   /**
@@ -19,8 +16,8 @@ export default class CommentAdapter extends Adapter<
   }: {
     id: number;
     parent: 'task' | 'project';
-  }): Promise<TodoistComment[]> {
-    const { body }: { body: TodoistComment[] } = await this.client.get(
+  }): Promise<GetResourceByName<Name>[]> {
+    const { body }: { body: GetResourceByName<Name>[] } = await this.client.get(
       `${this.type}s?${parent}_id=${id}`,
     );
 
