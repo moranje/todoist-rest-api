@@ -1,16 +1,64 @@
 {
   "parser": "@typescript-eslint/parser",
+  "plugins": ["simple-import-sort", "jsdoc", "security"],
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "prettier/@typescript-eslint",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:jsdoc/recommended",
+    "plugin:eslint-comments/recommended",
+    "plugin:security/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 2020,
     "sourceType": "module",
     "project": "tsconfig.json"
   },
+  "settings": {
+    "jsdoc": {
+      "ignorePrivate": true
+    }
+  },
   "rules": {
-    "@typescript-eslint/ban-ts-ignore": "warn"
+    "simple-import-sort/sort": "error",
+    "@typescript-eslint/ban-ts-ignore": "warn",
+    "jsdoc/check-alignment": 1,
+    "jsdoc/check-examples": 1,
+    "jsdoc/check-indentation": 1,
+    "jsdoc/check-param-names": 0,
+    "jsdoc/check-property-names": 1,
+    "jsdoc/check-syntax": 1,
+    "jsdoc/check-tag-names": 1,
+    "jsdoc/check-types": 1,
+    "jsdoc/check-values": 1,
+    "jsdoc/newline-after-description": 1,
+    "jsdoc/no-types": [
+      1,
+      {
+        "contexts": ["any"]
+      }
+    ],
+    "jsdoc/no-undefined-types": 0,
+    "jsdoc/require-description-complete-sentence": 1,
+    "jsdoc/require-description": 1,
+    "jsdoc/require-example": 0,
+    "jsdoc/require-file-overview": 0,
+    "jsdoc/require-hyphen-before-param-description": 0,
+    "jsdoc/require-jsdoc": [
+      1,
+      {
+        "publicOnly": true
+      }
+    ],
+    "jsdoc/require-param-description": 1,
+    "jsdoc/require-param-name": 1,
+    "jsdoc/require-param-type": 0,
+    "jsdoc/require-param": 1,
+    "jsdoc/require-returns-check": 1,
+    "jsdoc/require-returns-description": 1,
+    "jsdoc/require-returns-type": 0,
+    "jsdoc/require-returns": 1,
+    "jsdoc/valid-types": 1,
+    "eslint-comments/disable-enable-pair": 0
   }
 }
