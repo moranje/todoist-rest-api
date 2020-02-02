@@ -32,7 +32,7 @@
     "build": "npx tsc",
     "commit": "./node_modules/cz-customizable/standalone.js",
     "coverage": "nyc report --reporter=text-lcov | npx coveralls",
-    "lint": "npx eslint \"src/**\" --fix",
+    "lint": "tsc --noEmit && npx eslint \"src/**/*.ts\" --fix",
     "semantic-release": "semantic-release",
     "test": "nyc ava --watch",
     "test:prod": "npm run lint && npx tsc --noEmit && nyc ava"
