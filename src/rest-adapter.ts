@@ -52,6 +52,7 @@ export default class RESTAdapter<Name> {
       },
       hooks: {
         beforeError: [
+          /* istanbul ignore next */
           (error: GeneralError) => {
             const { response } = error as HTTPError;
             if (response && response.body) {
