@@ -12,9 +12,9 @@ $ npm install todoist-rest-api
 
 ```ts
 import todoist from 'todoist-rest-api';
-// or const todoist = require('todoist-rest-api');
+// or const todoist = require('todoist-rest-api').default;
 
-const api = todoist('1234567890abcdefghijklmnopqrstuvwxyz1234');
+const api = todoist('1234567890abcdef1234567890abcdef12345678');
 const tasks = await api.v1.task.findAll();
 ```
 
@@ -40,7 +40,7 @@ Example:
 ```js
 import todoist from 'todoist-rest-api';
 
-const api = todoist('1234567890abcdefghijklmnopqrstuvwxyz1234');
+const api = todoist('1234567890abcdef1234567890abcdef12345678');
 ```
 
 ### TodoistRESTAPI
@@ -69,7 +69,7 @@ Example:
 ```js
 import todoist from 'todoist-rest-api';
 
-const api = todoist('1234567890abcdefghijklmnopqrstuvwxyz1234');
+const api = todoist('1234567890abcdef1234567890abcdef12345678');
 const taskAdapter = api.v1.task;
 const projectAdapter = api.v1.project;
 const labelAdapter = api.v1.label;
@@ -101,15 +101,15 @@ Example:
 ```js
 import todoist from 'todoist-rest-api';
 
-const api = todoist('1234567890abcdefghijklmnopqrstuvwxyz1234');
-let task = null;
-// Or use top-level await if thats available to you
+const api = todoist('1234567890abcdef1234567890abcdef12345678');
+let task;
+// Or use top-level await if that's available to you
 (async () => {
-  try {
-    task = await api.v1.task.find(1);
-  } catch (error) {
-    // Do something
-  }
+  task = await api.v1.task.find(1).catch(error => {
+    // Handle error
+  });
+
+  // Do something with task
 })();
 ```
 
@@ -130,15 +130,17 @@ Example:
 ```js
 import todoist from 'todoist-rest-api';
 
-const api = todoist('1234567890abcdefghijklmnopqrstuvwxyz1234');
-let project = null;
-// Or use top-level await if thats available to you
+const api = todoist('1234567890abcdef1234567890abcdef12345678');
+let project;
+// Or use top-level await if that's available to you
 (async () => {
-  try {
-    project = await api.v1.project.create({ name: 'Next Actions' });
-  } catch (error) {
-    // Do something
-  }
+  project = await api.v1.project
+    .create({ name: 'Next Actions' })
+    .catch(error => {
+      // Handle error
+    });
+
+  // Do something with project
 })();
 ```
 
@@ -159,14 +161,15 @@ Example:
 ```js
 import todoist from 'todoist-rest-api';
 
-const api = todoist('1234567890abcdefghijklmnopqrstuvwxyz1234');
-// Or use top-level await if thats available to you
+const api = todoist('1234567890abcdef1234567890abcdef12345678');
+let label;
+// Or use top-level await if that's available to you
 (async () => {
-  try {
-    await api.v1.label.update(3, { name: 'amsterdam' });
-  } catch (error) {
-    // Do something
-  }
+  label = await api.v1.label.update(3, { name: 'amsterdam' }).catch(error => {
+    // Handle error
+  });
+
+  // Do something with label
 })();
 ```
 
@@ -193,14 +196,17 @@ Example:
 ```js
 import todoist from 'todoist-rest-api';
 
-const api = todoist('1234567890abcdefghijklmnopqrstuvwxyz1234');
-// Or use top-level await if thats available to you
+const api = todoist('1234567890abcdef1234567890abcdef12345678');
+let comment;
+// Or use top-level await if that's available to you
 (async () => {
-  try {
-    await api.v1.comment.findAll({ id: 2, parent: 'task' });
-  } catch (error) {
-    // Do something
-  }
+  comment = await api.v1.comment
+    .findAll({ id: 2, parent: 'task' })
+    .catch(error => {
+      // Handle error
+    });
+
+  // Do something with comment
 })();
 ```
 
@@ -221,14 +227,12 @@ Example:
 ```js
 import todoist from 'todoist-rest-api';
 
-const api = todoist('1234567890abcdefghijklmnopqrstuvwxyz1234');
-// Or use top-level await if thats available to you
+const api = todoist('1234567890abcdef1234567890abcdef12345678');
+// Or use top-level await if that's available to you
 (async () => {
-  try {
-    await api.v1.section.remove(13);
-  } catch (error) {
-    // Do something
-  }
+  await api.v1.section.remove(13).catch(error => {
+    // Handle error
+  });
 })();
 ```
 
@@ -256,7 +260,7 @@ Create a new build with
 
 ### Run tests
 
-Run Ava test suite with:
+Run AVA test suite with:
 
 `npm run test`
 
