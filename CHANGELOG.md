@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/moranje/todoist-rest-api/compare/v1.3.1...v1.3.2) (2020-02-03)
+
+
+### Bug Fixes
+
+* **api:** remove unnecessary error information ([267b2df](https://github.com/moranje/todoist-rest-api/commit/267b2df51ccef662e05c65b940ab4abd48a84a6c))
+
 ## [1.3.1](https://github.com/moranje/todoist-rest-api/compare/v1.3.0...v1.3.1) (2020-02-02)
 
 
