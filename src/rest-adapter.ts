@@ -1,6 +1,5 @@
 import stringify from 'fast-safe-stringify';
 import got, { GeneralError, Got, HTTPError } from 'got';
-import status from 'http-status';
 import uuid from 'uuid';
 
 import { GetResourceByName, GetResourceOptionsByName } from './types';
@@ -58,11 +57,8 @@ export default class RESTAdapter<Name> {
             const { response } = error as HTTPError;
             if (response && response.body) {
               error.name = 'TodoistError';
-              error.message = `${response.body} (${response.statusCode} ${
-                // @ts-ignore incomplete type definition
-                status[response.statusCode]
-                // @ts-ignore incomplete type definition
-              }, ${status[response.statusCode + '_MESSAGE']})`;
+              error.message = `${response.body}`;
+              error.message = error.message.trim();
             }
 
             return error;
