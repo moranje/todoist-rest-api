@@ -74,7 +74,7 @@
     "@semantic-release/github": "7.0.2",
     "@types/uuid": "3.4.7",
     "@typescript-eslint/eslint-plugin": "2.18.0",
-    "@typescript-eslint/parser": "2.18.0",
+    "@typescript-eslint/parser": "2.19.0",
     "ava": "2.4.0",
     "coveralls": "3.0.9",
     "cz-customizable": "6.2.0",
