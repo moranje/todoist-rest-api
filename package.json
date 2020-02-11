@@ -63,7 +63,7 @@
   },
   "dependencies": {
     "fast-safe-stringify": "2.0.7",
-    "got": "10.5.0",
+    "got": "10.5.5",
     "query-string": "6.10.1",
     "uuid": "3.4.0"
   },
