@@ -85,7 +85,7 @@
     "eslint-plugin-jsdoc": "^21.0.0",
     "eslint-plugin-security": "^1.4.0",
     "eslint-plugin-simple-import-sort": "^5.0.1",
-    "husky": "4.2.2",
+    "husky": "4.2.3",
     "lint-staged": "10.0.7",
     "nock": "11.8.2",
     "nyc": "15.0.0",
