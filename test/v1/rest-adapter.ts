@@ -25,7 +25,7 @@ test('Adapter: constructor() missing type', t => {
       null,
       '1234567890abcdef1234567890abcdef01234567',
     );
-  }, Error);
+  }, null);
 
   t.is(
     error.message,
@@ -36,7 +36,7 @@ test('Adapter: constructor() missing type', t => {
 test('Adapter: constructor() missing token', t => {
   const error = t.throws(() => {
     const adapter = new RESTAdapter('project');
-  }, Error);
+  }, null);
 
   t.is(
     error.message,

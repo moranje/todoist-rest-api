@@ -47,7 +47,10 @@ test('Main: sections', t => {
 test('Main: token validation', t => {
   t.throws(
     () => todoist('1234567890abcdef'),
-    'Invalid API token. A token should be 40 characters long and exist of hexadecimals, was 1234567890abcdef (16 characters)',
+    {
+      message:
+        'Invalid API token. A token should be 40 characters long and exist of hexadecimals, was 1234567890abcdef (16 characters)',
+    },
     'should throw when an invalid api token is supplied',
   );
 });
