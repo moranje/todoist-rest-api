@@ -35,8 +35,6 @@ jobs:
     steps:
       - name: Create coverage
         run: npm run coverage
-        env:
-          CI: true
 
       - name: Create release
         run: npm run semantic-release
