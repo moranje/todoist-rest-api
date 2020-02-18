@@ -29,10 +29,12 @@ jobs:
         env:
           CI: true
 
-      - name: On success
+      - name: Create coverage
         run: npm run coverage
         env:
           CI: true
+
+      - name: Create release
         run: npm run semantic-release
         env:
           CI: true
