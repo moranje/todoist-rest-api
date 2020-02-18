@@ -1,6 +1,6 @@
 name: Build and release
 
-on: [push]
+on: [push, "pull_request"]
 
 jobs:
   build:
@@ -35,6 +35,11 @@ jobs:
     steps:
       - name: Create coverage
         run: npm run coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} #required
 
       - name: Create release
         run: npm run semantic-release

@@ -31,7 +31,7 @@
   "scripts": {
     "build": "./tools/build.sh",
     "commit": "./node_modules/cz-customizable/standalone.js",
-    "coverage": "nyc report --reporter=text-lcov | npx coveralls",
+    "coverage": "nyc --reporter=lcov ava",
     "lint": "tsc --noEmit && npx eslint \"src/**/*.ts\" --fix",
     "semantic-release": "semantic-release",
     "test": "nyc ava --watch",
