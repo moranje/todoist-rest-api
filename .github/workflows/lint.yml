@@ -1,6 +1,6 @@
 name: Build and release
 
-on: [push, "pull_request"]
+on: [push, 'pull_request']
 
 jobs:
   build:
@@ -34,7 +34,10 @@ jobs:
     needs: build
     steps:
       - name: Create coverage
-        run: npm run coverage
+        uses: actions/setup-node@v1
+        with:
+          node-version: 13
+          run: npm run coverage
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
