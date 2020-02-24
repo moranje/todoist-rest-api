@@ -28,7 +28,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install Dependencies
-        run: workflowsnpm install
+        run: npm install
 
       - name: Build
         run: npm run build
