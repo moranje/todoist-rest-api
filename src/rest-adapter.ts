@@ -1,5 +1,5 @@
 import stringify from 'fast-safe-stringify';
-import got, { GeneralError, Got, HTTPError } from 'got';
+import got, { GeneralError, Got, HTTPError, Response } from 'got';
 import uuid from 'uuid';
 
 import { GetResourceByName, GetResourceOptionsByName } from './types';
@@ -59,6 +59,8 @@ export default class RESTAdapter<Name> {
               error.name = 'TodoistError';
               error.message = `${response.body}`;
               error.message = error.message.trim();
+              // @ts-ignore
+              error.url = (response as Response).url;
             }
 
             return error;
