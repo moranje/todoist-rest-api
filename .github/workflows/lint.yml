@@ -28,9 +28,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install Dependencies
-        run: |
-          npm add -g pnpm
-          pnpm install
+        run: npm install --prefer-offline --no-audit
 
       - name: Build
         run: npm run build
