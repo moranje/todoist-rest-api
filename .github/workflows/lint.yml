@@ -1,6 +1,6 @@
 name: Build and release
 
-on: [push, 'pull_request']
+on: [push, pull_request]
 
 jobs:
   build:
@@ -28,7 +28,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Install Dependencies
-        run: npm install
+        run: npm add -g pnpm && pnpm install
 
       - name: Build
         run: npm run build
