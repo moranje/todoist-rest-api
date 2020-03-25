@@ -1,6 +1,6 @@
 {
   "name": "todoist-rest-api",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "A full-featured node.js wrapper for Todoist REST API",
   "keywords": [
     "todoist",

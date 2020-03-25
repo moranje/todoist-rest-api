@@ -1,3 +1,9 @@
+## [1.3.4](https://github.com/moranje/todoist-rest-api/compare/v1.3.3...v1.3.4) (2020-03-25)
+
+### Bug Fixes
+
+- upgrade query-string from 6.11.0 to 6.11.1 ([b368659](https://github.com/moranje/todoist-rest-api/commit/b3686597c06c4f803e20572fb4aa843cd949ea3d))
+
 ## [1.3.3](https://github.com/moranje/todoist-rest-api/compare/v1.3.2...v1.3.3) (2020-02-25)
 
 ### Bug Fixes
