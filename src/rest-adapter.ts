@@ -48,9 +48,13 @@ export default class RESTAdapter<Name> {
       responseType: 'json',
       headers: {
         Authorization: `Bearer ${token}`,
-        'X-Request-Id': uuid(),
       },
       hooks: {
+        beforeRequest: [
+          (options): void => {
+            options.headers['X-Request-Id'] = uuid();
+          },
+        ],
         beforeError: [
           /* istanbul ignore next */
           (error: GeneralError): GeneralError => {
