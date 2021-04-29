@@ -1,0 +1,25 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: monthly
+  open-pull-requests-limit: 10
+  versioning-strategy: widen
+  ignore:
+  - dependency-name: got
+    versions:
+    - 11.8.1
+  - dependency-name: rollup
+    versions:
+    - 2.35.1
+    - 2.38.3
+  - dependency-name: ava
+    versions:
+    - 3.14.0
+  - dependency-name: lint-staged
+    versions:
+    - 10.5.3
+  - dependency-name: eslint-plugin-prettier
+    versions:
+    - 3.3.0
