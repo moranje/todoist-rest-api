@@ -61,7 +61,7 @@
   "dependencies": {
     "fast-safe-stringify": "2.0.7",
     "got": "10.7.0",
-    "query-string": "6.11.1",
+    "query-string": "6.12.0",
     "uuid": "3.4.0"
   },
   "devDependencies": {
@@ -85,7 +85,7 @@
     "husky": "4.2.3",
     "lint-staged": "10.1.1",
     "nock": "12.0.1",
-    "nyc": "15.0.0",
+    "nyc": "15.1.0",
     "prettier": "1.19.1",
     "rollup": "^1.31.0",
     "rollup-plugin-dts": "^1.2.1",
